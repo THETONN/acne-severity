@@ -1,0 +1,135 @@
+.image-uploader {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .upload-area {
+    border: 3px dashed #7f8c8d;
+    border-radius: 16px;
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .upload-area.active {
+    border-color: #3498db;
+    background-color: rgba(52, 152, 219, 0.15);
+  }
+  
+  .upload-area:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  .upload-icon {
+    font-size: 80px;
+    color: #3498db;
+    margin-bottom: 25px;
+  }
+  
+  .file-types {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+    font-size: 28px;
+    color: #7f8c8d;
+  }
+  
+  .preview-area, .uploaded-area {
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  
+  .preview-image, .uploaded-image {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  
+  .alert {
+    margin-bottom: 25px;
+    border-radius: 8px;
+  }
+  
+  .progress-bar {
+    height: 12px;
+    border-radius: 6px;
+  }
+  
+  h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #34495e;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+  }
+  
+  .btn-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+  }
+  
+  .btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .image-uploader {
+      padding: 20px;
+    }
+  
+    .upload-area {
+      padding: 30px;
+    }
+  
+    .preview-image, .uploaded-image {
+      max-height: 300px;
+    }
+  }
