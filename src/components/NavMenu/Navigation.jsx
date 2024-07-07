@@ -1,14 +1,13 @@
-// src/components/NavMenu/Navigation.jsx
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Navbar, Container } from 'react-bootstrap';
-import NavMenu from './NavMenu';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Link } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faInfoCircle, faVial } from '@fortawesome/free-solid-svg-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navigation.css';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
-import logoAIE from '../../assets/LOGO-AIE.png'; 
+import logoAIE from '../../assets/LOGO-AIE.png';
 import logoMFU from '../../assets/logo_mfu_3d_colour.png';
+import './Navigation.css';
 
 const routes = [
   { name: "Home", href: "home", icon: faHome },
@@ -18,26 +17,35 @@ const routes = [
 
 const Navigation = () => {
   return (
-    <div className="ezy__nav1_3wqhm31s sticky-top">
-      <Navbar expand="lg" className="py-3">
-        <Container>
-          {/* <Navbar.Brand href="#">Easy Frontend</Navbar.Brand> */}
-          <Navbar.Brand href="#">
-            <img src={logoAIE} alt="Logo1" className="me-2" style={{ height: '40px' }} />
-            <img src={logoMFU} alt="Logo2" className="me-2" style={{ height: '40px' }} />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="ezy__nav1_3wqhm31s-navbar-nav">
-            <span>
-              <span />
-            </span>
-          </Navbar.Toggle>
-          <Navbar.Collapse id="ezy__nav1_3wqhm31s-navbar-nav">
-            <NavMenu routes={routes} />
-            <LanguageSelector />
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
+    <Navbar expand="lg" className="ezy__nav1_3wqhm31s sticky-top" bg="light">
+      <Container>
+        <Navbar.Brand href="#home" className="d-flex align-items-center">
+          <img src={logoAIE} alt="AIE Logo" className="nav-logo me-2" />
+          <img src={logoMFU} alt="MFU Logo" className="nav-logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            {routes.map((route, index) => (
+              <Nav.Item key={index}>
+                <Link 
+                  to={route.href} 
+                  spy={true} 
+                  smooth={true} 
+                  offset={-70} 
+                  duration={500} 
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon icon={route.icon} className="me-2" />
+                  {route.name}
+                </Link>
+              </Nav.Item>
+            ))}
+          </Nav>
+          <LanguageSelector />
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
