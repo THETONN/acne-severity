@@ -8,26 +8,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AnalysisPage from "./components/AnalysisPage/AnalysisPage";
 import Copyright from "./components/Footer/Footer";
 import Navigation from "./components/NavMenu/Navigation";
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
   return (
-    <LanguageProvider>
-      <div className="App">
-        <Navigation />
-        <div id="home">
-          <CallHeader />
+    <ParallaxProvider>
+      <LanguageProvider>
+        <div className="App">
+          <Navigation />
+          <div id="home">
+            <CallHeader />
+          </div>
+          <main>
+            <div id="about">
+              <AboutUs />
+            </div>
+            <div id="demo">
+              <AnalysisPage />
+            </div>
+            <Copyright />
+          </main>
         </div>
-        <main>
-          <div id="about">
-            <AboutUs />
-          </div>
-          <div id="demo">
-            <AnalysisPage />
-          </div>
-          <Copyright />
-        </main>
-      </div>
-    </LanguageProvider>
+      </LanguageProvider>
+    </ParallaxProvider>
   );
 }
 

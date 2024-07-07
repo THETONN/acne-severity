@@ -1,7 +1,5 @@
-/* src/components/NavMenu/Navigation.css */
-.ezy__nav1_3wqhm31s .navbar {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
+.ezy__nav1_3wqhm31s {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
 
 .ezy__nav1_3wqhm31s .navbar-brand {
@@ -9,31 +7,43 @@
   color: #343a40;
 }
 
-.ezy__nav1_3wqhm31s .navbar-nav .nav-link {
-  color: #343a40;
-  font-size: 1rem;
-  font-weight: 500;
+.ezy__nav1_3wqhm31s .nav-logo {
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
-.ezy__nav1_3wqhm31s .navbar-nav .nav-link:hover {
+.ezy__nav1_3wqhm31s .nav-logo:hover {
+  transform: scale(1.05);
+}
+
+.ezy__nav1_3wqhm31s .nav-link {
+  color: #495057;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.ezy__nav1_3wqhm31s .nav-link:hover {
   color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+  border-radius: 4px;
 }
 
 .ezy__nav1_3wqhm31s .navbar-toggler {
   border: none;
-  outline: none;
+  padding: 0.25rem 0.75rem;
 }
 
-.ezy__nav1_3wqhm31s .navbar-toggler span {
-  background-color: #343a40;
-  width: 30px;
-  height: 2px;
-  display: block;
-  margin: 5px auto;
-  transition: all 0.3s;
+.ezy__nav1_3wqhm31s .navbar-toggler:focus {
+  box-shadow: none;
 }
-/* src/components/NavMenu/Navigation.css */
-.ezy__nav1_3wqhm31s .navbar-brand img {
-  height: 40px;
-  margin-right: 10px;
+
+@media (max-width: 991.98px) {
+  .ezy__nav1_3wqhm31s .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .ezy__nav1_3wqhm31s .nav-link {
+    padding: 0.75rem 1rem;
+  }
 }
