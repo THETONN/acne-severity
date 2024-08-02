@@ -53,7 +53,7 @@ const PredictionResults = ({ uploadedImage, predictionResult }) => {
       </Carousel>
       <div className="navigation-buttons">
         <Button onClick={() => setIndex(index === 0 ? 1 : 0)}>
-          {index === 0 ? (texts?.common?.next || 'Next') : (texts?.common?.previous || 'Previous')}
+          {index === 0 ? (texts?.common?.next || 'Skincare Advice') : (texts?.common?.previous || 'Prediction Results')}
         </Button>
       </div>
     </div>

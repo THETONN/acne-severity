@@ -21,6 +21,7 @@
   font-weight: 500;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .ezy__nav1_3wqhm31s .nav-link:hover {

@@ -1,53 +1,33 @@
+// import React from 'react';
 import './Footer.css';
-import { Nav, Container, Row, Col } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faDribbble, faBehance } from '@fortawesome/free-brands-svg-icons';
-
-const socialLinks = [
-    {
-        icon: faFacebook,
-        href: "",
-    },
-    {
-        icon: faTwitter,
-        href: "",
-    },
-    {
-        icon: faDribbble,
-        href: "",
-    },
-    {
-        icon: faBehance,
-        href: "",
-    },
-];
-
-const SocialLinks = () => (
-    <Nav className="ezy__copyright3-social">
-        {socialLinks.map((link, i) => (
-            <li key={i}>
-                <a href={link.href} className="">
-                    <FontAwesomeIcon icon={link.icon} />
-                </a>
-            </li>
-        ))}
-    </Nav>
-);
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import logoAIE from '../../assets/LOGO-AIE.png';
+import logoMFU from '../../assets/logo_mfu_3d_colour.png';
+import logoSHS from '../../assets/shs.jpg';
 
 const Copyright = () => {
     return (
-        <section className="ezy__copyright3 text-center text-lg-start pt-5 pb-5">
+        <footer className="ezy__copyright3 text-center pt-5 pb-4">
             <Container>
-                <Row className="d-flex justify-content-between align-items-center">
-                    <Col lg={4}>
-                        <p className="mb-lg-0">Copyright all rights reserved</p>
+                <Row className="justify-content-center mb-4">
+                    <Col xs={12} className="text-center">
+                        {/* <h5 className="sponsor-title mb-3">ผู้สนับสนุน</h5> */}
+                        <Image src={logoAIE} alt="AIE Logo" className="footer-logo me-4" />
+                        <Image src={logoMFU} alt="MFU Logo" className="footer-logo me-4" />
+                        <Image src={logoSHS} alt="MFU Logo" className="footer-logo" />
                     </Col>
-                    <Col lg={4} className="d-flex justify-content-center justify-content-lg-end">
-                        <SocialLinks />
+                </Row>
+                <Row className="align-items-center">
+                    {/* <Col lg={6} className="text-lg-start mb-3 mb-lg-0">
+                        <p className="mb-0">พัฒนาโดย: ศูนย์วิจัยปัญญาประดิษฐ์และเทคโนโลยีก้าวหน้า</p>
+                        <p className="mb-0">สำนักวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่ฟ้าหลวง</p>
+                    </Col> */}
+                    <Col lg={12} className="text-lg-end">
+                        <p className="mb-0">© 2024 สงวนลิขสิทธิ์โดย มหาวิทยาลัยแม่ฟ้าหลวง</p>
                     </Col>
                 </Row>
             </Container>
-        </section>
+        </footer>
     );
 };
 

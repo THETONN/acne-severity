@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
+// import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { ParallaxProvider, useParallax } from 'react-scroll-parallax';
@@ -16,7 +15,7 @@ const CallHeader = () => {
       <section className="ezy__cta16">
         <Container fluid className="position-relative p-0">
           <Row className="g-0">
-            <Col xs={12} md={6} className="ezy__cta16-content">
+            <Col xs={12} lg={8} className="ezy__cta16-content">
               <motion.div 
                 className="ezy__cta16-wrapper"
                 initial={{ opacity: 0, y: 50 }}
@@ -65,8 +64,8 @@ const CallHeader = () => {
                 </div>
               </motion.div>
             </Col>
-            <Col xs={12} md={6} className="ezy__cta16-image">
-              <div ref={ref} className="image-overlay">
+            <Col xs={12} lg={4} className="ezy__cta16-image-container">
+              <div ref={ref} className="ezy__cta16-image">
                 <img src={aiskin} alt="AI Skin Analysis" className="img-fluid" />
                 <div className="ai-analysis-overlay"></div>
               </div>

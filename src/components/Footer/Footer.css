@@ -1,58 +1,56 @@
 .ezy__copyright3 {
-	/* Bootstrap variables */
-	--bs-body-color: #212529;
-	--bs-body-bg: rgb(255, 255, 255);
-
-	/* easy frontend variables */
-	--ezy-theme-color: rgb(13, 110, 253);
-	--ezy-theme-color-rgb: 13, 110, 253;
-
-	background-color: var(--bs-body-bg);
-	color: var(--bs-body-color);
+    --bs-body-color: #212529;
+    --bs-body-bg: rgb(255, 255, 255);
+    --ezy-theme-color: rgb(13, 110, 253);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    padding: 3rem 0;
 }
 
-/* Gray Block Style */
+.sponsor-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    height: 150px;
+    width: auto;
+    margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .ezy__copyright3 .row > div {
+        text-align: center !important;
+    }
+    
+    .footer-logo {
+        height: 80px;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-logo {
+        height: 60px;
+    }
+}
+
+/* Keep your existing color scheme classes */
 .gray .ezy__copyright3,
 .ezy__copyright3.gray {
-	/* Bootstrap variables */
-	--bs-body-bg: rgb(246, 246, 246);
+    --bs-body-bg: rgb(246, 246, 246);
 }
 
-/* Dark Gray Block Style */
 .dark-gray .ezy__copyright3,
 .ezy__copyright3.dark-gray {
-	/* Bootstrap variables */
-	--bs-body-color: #ffffff;
-	--bs-body-bg: rgb(30, 39, 53);
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(30, 39, 53);
 }
 
-/* Dark Block Style */
 .dark .ezy__copyright3,
 .ezy__copyright3.dark {
-	/* Bootstrap variables */
-	--bs-body-color: #ffffff;
-	--bs-body-bg: rgb(11, 23, 39);
-}
-
-.ezy__copyright3-nav .nav-link {
-	color: var(--bs-body-color);
-}
-
-.ezy__copyright3-nav .nav-link:hover {
-	color: var(--bs-body-color);
-	opacity: 0.9;
-}
-
-.ezy__copyright3-social li {
-	list-style-type: none;
-	display: inline-block;
-	margin: 6px 8px;
-}
-
-.ezy__copyright3-social li a {
-	color: var(--bs-body-color);
-}
-
-.ezy__copyright3-social li a:hover {
-	color: var(--ezy-theme-color);
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(11, 23, 39);
 }

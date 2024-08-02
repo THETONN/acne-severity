@@ -7,12 +7,12 @@ export default {
     predict: "ทำนาย",
   },
   uploader: {
-    uploadTitle: "อัปโหลดรูปภาพแนะนำตัว",
+    uploadTitle: "อัปโหลดรูปภาพใบหน้า",
     uploadSubtitle:
       "เพื่อผลลัพธ์ที่ดีที่สุด ควรอัปโหลดภาพที่มีความละเอียดอย่างน้อย 1080p (1920 x 1080 พิกเซล)",
     dragAndDrop: "ลากและวางไฟล์ภาพเพื่ออัปโหลด",
     orClickToSelect: "หรือคลิกเพื่อเลือกไฟล์",
-    addToProfile: "เพิ่มลงในโปรไฟล์",
+    addToProfile: "อัปโหลดรูปภาพ",
     uploadNew: "อัปโหลดรูปใหม่",
     previews: "ตัวอย่าง",
   },

@@ -9,12 +9,12 @@ export default {
     predicting: 'Predicting...'
   },
   uploader: {
-    uploadTitle: "Upload Profile Picture",
+    uploadTitle: "Upload Picture",
     uploadSubtitle:
       "For best results, upload an image with at least 1080p resolution (1920 x 1080 pixels)",
     dragAndDrop: "Drag and drop image files to upload",
     orClickToSelect: "or click to select files",
-    addToProfile: "Add to Profile",
+    addToProfile: "Upload",
     uploadNew: "Upload New",
     previews: "Preview",
   },
