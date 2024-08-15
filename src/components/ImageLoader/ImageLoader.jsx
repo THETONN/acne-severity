@@ -1,6 +1,6 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React, { useState, useCallback } from 'react';
-import { Button, ProgressBar, Alert } from 'react-bootstrap';
+import { Button, ProgressBar, Alert, Modal } from 'react-bootstrap';
 import { useDropzone } from 'react-dropzone';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCloudUploadAlt, FaImage } from 'react-icons/fa';
@@ -14,6 +14,7 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
   const [progress, setProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const { texts } = useLanguage();
 
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
@@ -40,22 +41,34 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
     setIsUploading(true);
     setProgress(0);
 
-    const uploadTask = new Promise((resolve) => {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 10;
-        setProgress(progress);
-        if (progress >= 100) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 100);
-    });
+    const formData = new FormData();
+    formData.append('image', file);
 
-    uploadTask.then(() => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://predictacne-jc3i5ycouq-et.a.run.app/check_face', true);
+    
+    xhr.upload.onprogress = (event) => {
+      if (event.lengthComputable) {
+        const percentComplete = (event.loaded / event.total) * 100;
+        setProgress(percentComplete);
+      }
+    };
+
+    xhr.onload = () => {
       setIsUploading(false);
-      onImageUpload(preview);
-    });
+      if (xhr.status === 200) {
+        onImageUpload(file, preview);
+      } else {
+        setShowModal(true);
+      }
+    };
+
+    xhr.onerror = () => {
+      setError("An error occurred while uploading the image. Please try again.");
+      setIsUploading(false);
+    };
+
+    xhr.send(formData);
   };
 
   const handleReset = () => {
@@ -64,6 +77,7 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
     setProgress(0);
     setIsUploading(false);
     setError('');
+    setShowModal(false);
     onReset();
   };
 
@@ -100,19 +114,34 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
         <div className="preview-area">
           <img src={preview} alt="Preview" className="preview-image" />
           {isUploading ? (
-            <ProgressBar now={progress} label={`${progress}%`} className="mt-3" animated />
+            <ProgressBar now={progress} label={`${Math.round(progress)}%`} className="mt-3" animated />
           ) : (
             <div className="button-group mt-3">
-              <Button variant="primary" onClick={handleUpload}>
+              <Button variant="primary" onClick={handleUpload} disabled={isUploading}>
                 {texts.uploader.addToProfile}
               </Button>
-              <Button variant="secondary" onClick={handleReset}>
+              <Button variant="secondary" onClick={handleReset} disabled={isUploading}>
                 {texts.common.cancel}
               </Button>
             </div>
           )}
         </div>
       )}
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{texts.uploader.noFaceDetected}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{texts.uploader.pleaseUploadAnother}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            {texts.common.close}
+          </Button>
+          <Button variant="primary" onClick={handleReset}>
+            {texts.common.uploadNew}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

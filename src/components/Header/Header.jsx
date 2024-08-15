@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
 // import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { ParallaxProvider, useParallax } from 'react-scroll-parallax';
 import useLanguage from '../contexts/useLanguage';
 import './Header.css';
-import aiskin from '../../assets/AIskin.jpg';
+import aiskin from '../../assets/face3.webp';
+import { Link } from 'react-scroll';
+
 
 const CallHeader = () => {
   const { texts, language } = useLanguage();
@@ -42,11 +45,13 @@ const CallHeader = () => {
                   {language === 'th' ? 'เพื่อค้นหาปัญหาผิวของคุณ' : 'To find your skin problems'}
                 </p>
                 <div className="mt-4">
-                  <Button variant="primary" className="ezy__cta16-btn" href="#upload-section">
-                    {language === 'th' ? 'ทดลองใช้ฟรี' : 'Try for Free'}
-                  </Button>
+                  <Link to="demo" spy={true} smooth={true} offset={-70} duration={500}>
+                    <Button variant="primary" className="ezy__cta16-btn">
+                      {language === 'th' ? 'ทดลองใช้ฟรี' : 'Try for Free'}
+                    </Button>
+                  </Link>
                 </div>
-                <div className="ezy__cta16-features mt-5">
+                {/* <div className="ezy__cta16-features mt-5">
                   <Row>
                     {['accuracy', 'fast', 'easy'].map((feature, index) => (
                       <Col key={index} xs={12} md={4}>
@@ -61,7 +66,7 @@ const CallHeader = () => {
                       </Col>
                     ))}
                   </Row>
-                </div>
+                </div> */}
               </motion.div>
             </Col>
             <Col xs={12} lg={4} className="ezy__cta16-image-container">

@@ -6,8 +6,9 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './About.css';
-import imageLand1 from '../../assets/image-land-1.png';
-import imageLand2 from '../../assets/image-land-2.png';
+import imageLand1 from '../../assets/image-land-1.webp';
+import imageLand2 from '../../assets/image-land-2.webp';
+import useLanguage from '../contexts/useLanguage';
 
 const StyledSection = styled.section`
   background-color: #f8f9fa;
@@ -36,28 +37,28 @@ const StyledCard = styled(motion.div)`
 `;
 
 const StyledImage = styled(motion.img)`
-  width: 100%;
+  width: 80%;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 `;
 
 const stories = [
   {
-    title: "Get to know your skin",
-    description:
-      "Our AI Skin Analysis is as simple as taking a selfie and will help you better understand your skin's individual needs. Our online skin analysis method is extremely fast and precise. The ultra-fast algorithm provides the greatest user experience possible by recognizing two types of issues in less than two seconds.",
+    titleKey: "topic1",
+    descriptionKey: "detail1",
     image: imageLand2,
   },
   {
-    title: "Using the analysis results, select the best products for your skin",
-    description:
-      "After analyzing your types of skin and your class of acne. The AI Skin Analysis will recommend items that are appropriate for your skin type and severity class of acne in order to achieve the greatest outcomes and to assist you in making a decision during your buy-the-product experience from pharmacy.",
+    titleKey: "topic2",
+    descriptionKey: "detail2",
     image: imageLand1,
   },
 ];
 
 const StoryItem = ({ item, index }) => {
-  const { title, description, image } = item;
+  const { texts } = useLanguage();
+  const { titleKey, descriptionKey, image } = item;
+  
   return (
     <StyledCard
       initial={{ opacity: 0, y: 50 }}
@@ -68,7 +69,7 @@ const StoryItem = ({ item, index }) => {
         <Col xs={12} md={6} className={index % 2 === 0 ? "order-md-2" : "order-md-1"}>
           <StyledImage
             src={image}
-            alt={title}
+            alt={texts.Story[titleKey]}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           />
@@ -80,7 +81,7 @@ const StoryItem = ({ item, index }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {title}
+            {texts.Story[titleKey]}
           </motion.h4>
           <motion.p
             className="mb-0"
@@ -88,7 +89,7 @@ const StoryItem = ({ item, index }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            {description}
+            {texts.Story[descriptionKey]}
           </motion.p>
         </Col>
       </Row>
@@ -98,14 +99,15 @@ const StoryItem = ({ item, index }) => {
 
 StoryItem.propTypes = {
   item: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    titleKey: PropTypes.string.isRequired,
+    descriptionKey: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
 
 const AboutUs = () => {
+  const { texts } = useLanguage();
   return (
     <StyledSection className="ezy__about6" id="ezy__about6">
       <Container>
@@ -117,15 +119,10 @@ const AboutUs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Our Story
+              {texts.Story.title}
             </StyledHeading>
             <StyledSubHeading>
-              Our AI-driven skin analysis technology revolutionizes the way you
-              understand and care for your skin. By simply taking a selfie, our
-              advanced algorithm provides an in-depth analysis of your skin
-              condition, recognizing various issues in just seconds. Our goal is
-              to empower you with personalized insights and recommendations,
-              helping you to achieve healthier, clearer skin with confidence.
+              {texts.Story.detail}
             </StyledSubHeading>
           </Col>
         </Row>

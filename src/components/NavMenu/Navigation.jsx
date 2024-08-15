@@ -12,6 +12,7 @@ import './Navigation.css';
 const routes = [
   { name: "Home", href: "home", icon: faHome },
   { name: "About", href: "about", icon: faInfoCircle },
+  { name: "Info", href: "skin-info", icon: faInfoCircle },
   { name: "Demo", href: "demo", icon: faVial }
 ];
 

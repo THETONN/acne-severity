@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./App.css";
 import CallHeader from "./components/Header/Header";
@@ -9,6 +9,7 @@ import AnalysisPage from "./components/AnalysisPage/AnalysisPage";
 import Copyright from "./components/Footer/Footer";
 import Navigation from "./components/NavMenu/Navigation";
 import { ParallaxProvider } from 'react-scroll-parallax';
+import SkinInfo from "./components/SkinInfo/SkinInfo";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           <main>
             <div id="about">
               <AboutUs />
+            </div>
+            <div id="skin-info">
+              <SkinInfo />
             </div>
             <div id="demo">
               <AnalysisPage />

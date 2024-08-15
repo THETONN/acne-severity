@@ -1,11 +1,14 @@
 // import React from 'react';
 import './Footer.css';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import logoAIE from '../../assets/LOGO-AIE.png';
-import logoMFU from '../../assets/logo_mfu_3d_colour.png';
-import logoSHS from '../../assets/shs.jpg';
+import logoAIE from '../../assets/LOGO-AIE.webp';
+import logoMFU from '../../assets/logo_mfu_3d_colour.webp';
+import logoSHS from '../../assets/shs.webp';
+import useLanguage from '../contexts/useLanguage';
 
 const Copyright = () => {
+  const { texts } = useLanguage();
+
     return (
         <footer className="ezy__copyright3 text-center pt-5 pb-4">
             <Container>
@@ -23,7 +26,7 @@ const Copyright = () => {
                         <p className="mb-0">สำนักวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่ฟ้าหลวง</p>
                     </Col> */}
                     <Col lg={12} className="text-lg-end">
-                        <p className="mb-0">© 2024 สงวนลิขสิทธิ์โดย มหาวิทยาลัยแม่ฟ้าหลวง</p>
+                        <p className="mb-0">{texts.footer.cc}</p>
                     </Col>
                 </Row>
             </Container>

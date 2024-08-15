@@ -72,7 +72,7 @@
   }
   
   .progress-bar {
-    height: 12px;
+    height: 100%;
     border-radius: 6px;
   }
   

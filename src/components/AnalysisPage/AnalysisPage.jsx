@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import ImageUploader from '../ImageLoader/ImageLoader';
 import PredictionResults from '../PredictionResults/PredictionResults';
@@ -5,39 +6,61 @@ import AILoadingAnimation from '../animation/AILoadingAnimation';
 import '../ImageLoader/ImageLoader.css';
 import './AnalysisPage.css';
 import useLanguage from '../contexts/useLanguage';
-import { Button } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
 
 const AnalysisPage = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [predictionResult, setPredictionResult] = useState(null);
   const [isPredicting, setIsPredicting] = useState(false);
   const [showUploader, setShowUploader] = useState(true);
+  const [error, setError] = useState('');
+  const [isFaceDetected, setIsFaceDetected] = useState(false);
   const { texts } = useLanguage();
 
-  const handleImageUpload = (image) => {
+  const handleImageUpload = (image, preview) => {
     setUploadedImage(image);
+    setImagePreview(preview);
     setPredictionResult(null);
+    setError('');
+    setIsFaceDetected(true);
   };
 
   const handleReset = () => {
     setUploadedImage(null);
+    setImagePreview(null);
     setPredictionResult(null);
     setShowUploader(true);
+    setError('');
+    setIsFaceDetected(false);
   };
 
   const handlePredict = () => {
     setIsPredicting(true);
     setShowUploader(false);
-    // Simulated API call or model prediction
-    setTimeout(() => {
-      setPredictionResult({
-        skinType: "Non-inflammation",
-        nonInflammation: "Almost clear; rare non-inflammatory lesions with no more than one small inflammatory lesion.",
-        mildInflammation: "Some non-inflammatory lesions with no more than a few inflammatory lesions (papules/pustules only, no nodular lesions).",
-        severeInflammation: "Too many non-inflammatory lesions and may have some inflammatory lesions, but no more than a few nodular lesions."
+
+    const formData = new FormData();
+    formData.append('image', uploadedImage);
+
+    fetch('https://predictacne-jc3i5ycouq-et.a.run.app/predict', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setPredictionResult(data.prediction);
+        setIsPredicting(false);
+      })
+      .catch((error) => {
+        setError("An error occurred during prediction. Please try again.");
+        setIsPredicting(false);
+        setShowUploader(true);
       });
-      setIsPredicting(false);
-    }, 3500);
   };
 
   return (
@@ -47,7 +70,7 @@ const AnalysisPage = () => {
         {showUploader && (
           <div className="upload-section">
             <ImageUploader onImageUpload={handleImageUpload} onReset={handleReset} />
-            {uploadedImage && (
+            {isFaceDetected && (
               <div className="button-group mt-3">
                 <Button 
                   className="predict-button" 
@@ -68,10 +91,15 @@ const AnalysisPage = () => {
           </div>
         )}
         {isPredicting && <AILoadingAnimation />}
-        {predictionResult && (
+        {error && (
+          <Alert variant="danger" onClose={() => setError('')} dismissible>
+            {error}
+          </Alert>
+        )}
+        {predictionResult !== null && (
           <div className="results-section">
             <PredictionResults 
-              uploadedImage={uploadedImage} 
+              uploadedImage={imagePreview} 
               predictionResult={predictionResult} 
             />
             <Button 
