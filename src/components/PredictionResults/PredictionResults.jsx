@@ -9,7 +9,7 @@ const PredictionResults = ({ uploadedImage, predictionResult }) => {
 
   function getSeverityDetails(severityLevel, texts, language) {
     const severityDetails = {
-      1: {
+      0: {
         skinType: language === 'th' ? `ความรุนแรงระดับ 1: ${texts.predictionResults.nonInflammation}` : `Severity 1: ${texts.predictionResults.nonInflammation}`,
         description: language === 'th' ? 'สิวหัวดำ/สิวหัวขาว' : 'Comedolytic (Blackhead/Whitehead)',
         advice: (
@@ -57,7 +57,7 @@ const PredictionResults = ({ uploadedImage, predictionResult }) => {
           </React.Fragment>
         )
       },
-      2: {
+      1: {
         skinType: language === 'th' ? `ความรุนแรงระดับ 2: ${texts.predictionResults.mildInflammation}` : `Severity 2: ${texts.predictionResults.mildInflammation}`,
         description: language === 'th' ? 'สิวอักเสบตุ่มหนองและสิวอักเสบตุ่มนูน' : 'Papule and pustules',
         advice: (
@@ -127,7 +127,7 @@ const PredictionResults = ({ uploadedImage, predictionResult }) => {
         </React.Fragment>
         )
       },
-      3: {
+      2: {
         skinType: language === 'th' ? `ความรุนแรงระดับ 3: ${texts.predictionResults.severeInflammation}` : `Severity 3: ${texts.predictionResults.severeInflammation}`,
         description: language === 'th' ? 'สิวที่มีตุ่มหนอง สิวอักเสบตุ่มนูนและสิวอักเสบหลายๆตุ่มรวมกัน' : 'Papule, pustules, and multiple nodules',
         advice: (
