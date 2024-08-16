@@ -1,237 +1,279 @@
 .skin-info-container {
-    padding: 40px 80px;
-    background-color: #f8f9fa;
-    /* max-width: 1200px; */
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  .main-title {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 2rem;
-    text-align: center;
-    position: relative;
-  }
-  
-  .main-title::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #007bff, #00e5ff);
-    margin: 15px auto;
-    border-radius: 2px;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    position: relative;
-  }
-  
-  .section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    /* background-color: #007bff; */
-    margin: 10px auto;
-  }
-  .skin-type-link {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .check-skin-type-link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .check-skin-type-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
-  }
-  
-  .skin-types-image-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .skin-types-image {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-  }
-  
-  .skin-types-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* background: linear-gradient(to bottom, rgba(0,123,255,0.2), rgba(0,123,255,0.6)); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .skin-types-image-container:hover .skin-types-image-overlay {
-    opacity: 1;
-  }
-  
-  .skin-types-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .skin-type-card, .routine-card, .ingredient-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  }
-  
-  .skin-type-card:hover, .routine-card:hover, .ingredient-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
-  
-  .skin-type-card .card-body, .routine-card .card-body, .ingredient-card .card-body {
-    padding: 25px;
-  }
-  
-  .skin-type-card .card-title, .routine-card .card-title, .ingredient-card .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #007bff;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .skin-type-card .card-title::after, .routine-card .card-title::after, .ingredient-card .card-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background-color: #007bff;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .skin-type-card:hover .card-title::after, .routine-card:hover .card-title::after, .ingredient-card:hover .card-title::after {
-    width: 100%;
-  }
-  
-  .skin-type-card ul, .routine-card ol, .ingredient-card ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-  
-  .skin-type-card .advice {
-    margin-top: 15px;
-    font-style: italic;
-    color: #6c757d;
-    border-left: 3px solid #007bff;
+  padding: 20px;
+  background-color: #f8f9fa;
+  margin: 0 auto;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.main-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.main-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #007bff, #00e5ff);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin: 8px auto;
+}
+
+.skin-type-link {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.check-skin-type-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.check-skin-type-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.skin-types-image-container {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.skin-types-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.skin-types-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.skin-type-card, .routine-card, .ingredient-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+
+.skin-type-card:hover, .routine-card:hover, .ingredient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.skin-type-card .card-body, .routine-card .card-body, .ingredient-card .card-body {
+  padding: 20px;
+}
+
+.skin-type-card .card-title, .routine-card .card-title, .ingredient-card .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #007bff;
+  position: relative;
+  display: inline-block;
+}
+
+.skin-type-card .card-title::after, .routine-card .card-title::after, .ingredient-card .card-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease-in-out;
+}
+
+.skin-type-card:hover .card-title::after, .routine-card:hover .card-title::after, .ingredient-card:hover .card-title::after {
+  width: 100%;
+}
+
+.skin-type-card ul, .routine-card ol, .ingredient-card ul {
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+.skin-type-card .advice {
+  margin-top: 10px;
+  font-style: italic;
+  color: #6c757d;
+  border-left: 2px solid #007bff;
+  padding-left: 8px;
+}
+
+.skincare-routine-section, .ingredients-section {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.routine-image-container {
+  position: relative;
+  height: auto;
+  max-height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.routine-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.routine-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,123,255,0.2), rgba(0,123,255,0.6));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.routine-image-overlay h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.routine-image-container:hover .routine-image-overlay {
+  opacity: 1;
+}
+
+.routine-card {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.routine-card .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #007bff;
+  text-align: center;
+}
+
+.routine-card ol {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.routine-card ol li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.routine-card ol li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.routine-card strong {
+  color: #333;
+  display: block;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 767px) {
+  .routine-card ol {
     padding-left: 10px;
   }
   
-  .routine-card ol li, .ingredient-card ul li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 25px;
+  .routine-card ol li {
+    padding-left: 20px;
+    margin-bottom: 15px;
   }
   
-  .routine-card ol li::before, .ingredient-card ul li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #28a745;
-    font-weight: bold;
+  .routine-card ol li::before {
+    top: 2px;
   }
   
-  .skincare-routine-section, .ingredients-section {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
+  .routine-card strong {
+    font-size: 1rem;
   }
-  
-  .routine-image-container {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .routine-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .routine-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,123,255,0.2), rgba(0,123,255,0.6));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .routine-image-overlay h4 {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .routine-image-container:hover .routine-image-overlay {
-    opacity: 1;
-  }
-  
-  @media (max-width: 768px) {
-    .skin-type-card, .routine-card, .ingredient-card {
-      margin-bottom: 20px;
-    }
-    
-    .skin-types-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .skin-types-image-container, .routine-image-container {
-      height: 200px;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
+}
+
+@media (min-width: 768px) {
   .skin-info-container {
-    animation: fadeIn 1s ease-in-out;
+    padding: 40px;
   }
+
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .skin-types-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .skincare-routine-section {
+    padding: 30px;
+  }
+
+  .routine-image-container {
+    max-height: 300px;
+  }
+
+  .routine-card .card-title {
+    font-size: 1.5rem;
+  }
+
+  .routine-card ol li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
