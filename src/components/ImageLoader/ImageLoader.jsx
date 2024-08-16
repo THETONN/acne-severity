@@ -7,6 +7,8 @@ import { FaCloudUploadAlt, FaImage } from 'react-icons/fa';
 import './ImageLoader.css';
 import PropTypes from 'prop-types';
 import useLanguage from '../contexts/useLanguage';
+import heic2any from 'heic2any';
+
 
 const ImageUploader = ({ onImageUpload, onReset }) => {
   const [file, setFile] = useState(null);
@@ -17,26 +19,44 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
   const [showModal, setShowModal] = useState(false);
   const { texts } = useLanguage();
 
+  const handlePreview = useCallback(async (file) => {
+    try {
+      let previewFile = file;
+      if (file.type === 'image/heic' || file.type === 'image/heif') {
+        const jpegBlob = await heic2any({
+          blob: file,
+          toType: 'image/jpeg',
+          quality: 0.8
+        });
+        previewFile = new File([jpegBlob], file.name.replace(/\.(heic|heif)$/i, '.jpg'), { type: 'image/jpeg' });
+      }
+      const previewUrl = URL.createObjectURL(previewFile);
+      setPreview(previewUrl);
+      setFile(previewFile);
+    } catch (error) {
+      console.error('Error converting HEIF/HEIC:', error);
+      setError(texts.uploader.heifConversionError);
+    }
+  }, [texts.uploader.heifConversionError]);
+
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     if (rejectedFiles && rejectedFiles.length > 0) {
       setError(texts.uploader.errorMessage);
     } else if (acceptedFiles && acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0]);
-      const previewUrl = URL.createObjectURL(acceptedFiles[0]);
-      setPreview(previewUrl);
+      handlePreview(acceptedFiles[0]);
       setError('');
     }
-  }, [texts.uploader.errorMessage]);
+  }, [texts.uploader.errorMessage, handlePreview]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.jpg', '.png', '.gif']
+      'image/*': ['.jpeg', '.jpg', '.png', '.gif', '.heic', '.heif']
     },
     maxFiles: 1
   });
 
-  const handleUpload = () => {
+  const handleUpload = useCallback(() => {
     if (!file) return;
     setIsUploading(true);
     setProgress(0);
@@ -64,14 +84,14 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
     };
 
     xhr.onerror = () => {
-      setError("An error occurred while uploading the image. Please try again.");
+      setError(texts.uploader.uploadError);
       setIsUploading(false);
     };
 
     xhr.send(formData);
-  };
+  }, [file, preview, onImageUpload, texts.uploader.uploadError]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setFile(null);
     setPreview('');
     setProgress(0);
@@ -79,7 +99,7 @@ const ImageUploader = ({ onImageUpload, onReset }) => {
     setError('');
     setShowModal(false);
     onReset();
-  };
+  }, [onReset]);
 
   return (
     <div className="image-uploader">
