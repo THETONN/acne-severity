@@ -237,9 +237,9 @@ const PredictionResults = ({ uploadedImage, predictionResult }) => {
   const severityDetails = getSeverityDetails(predictionResult, texts, language);
   const getSeverityClass = (severity) => {
     switch(severity) {
-      case 1: return 'severity-1';
-      case 2: return 'severity-2';
-      case 3: return 'severity-3';
+      case 0: return 'severity-1';
+      case 1: return 'severity-2';
+      case 2: return 'severity-3';
       default: return '';
     }
   };
